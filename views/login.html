@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>League of Minecraft Pre-Alpha</title>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="../update.js"></script>
+	
+    <link href="../assets/styles/main.css" rel="stylesheet">
+</head>
+<body>
+<!-- 
+Dzwieki
+		<audio preload="auto" id="loginsubmit"><source src="../assets/sounds/interface/69_ui-generic_button_click_01.wav"></source></audio>
+		var audiosubmit = document.getElementById("loginsubmit");
+-->
+		<audio preload="auto" id="loginclick"><source src="../assets/sounds/interface/68_ui-generic_button_01.wav"></audio>
+
+<script>
+var audioclick = document.getElementById("loginclick");
+var audiosubmit = new Audio("../assets/sounds/interface/69_ui-generic_button_click_01.wav");
+var loginhover = new Audio("../assets/sounds/interface/72_ui-hud_levelup_01.wav");
+var loginclick = new Audio("../assets/sounds/interface/73_ui-hud_levelup_click_01.wav");
+var loginerror = new Audio("../assets/sounds/interface/74_ui-hud_levelup_release_01.wav");
+</script>
+<script>
+var gui = require('nw.gui');
+var win = gui.Window.get();
+function zamknijgre(){
+    gui.App.closeAllWindows();
+    gui.App.quit();}
+	
+</script>
+<div class="holdon"></div>
+<div class="lewo">
+
+<video id="bgvideo" autoplay loop>
+  <source src="../assets/videos/lom_video_bg.webm" type="video/webm" />
+  Ooops, something went wrong!.
+</video>
+    <div class="updateprogress"></div>
+    <div class="updateprogressbar"> </div>
+    <div class="updatetextwrap">Update: 50%</div>
+
+
+    <div class="blwrap">
+        <div class="bllogo">
+            <img draggable="false" src="../assets/images/bllogo.png">
+        </div>
+        <div class="bltext">
+            <input id="animation" class="checkbox" type="checkbox" checked>
+            <label for="animation"></label>
+            Login screen animation
+        </div>
+        <div class="bltext">
+            <input id="lsmusic" class="checkbox" type="checkbox" checked>
+            <label for="lsmusic"></label>
+            Login screen music</div>
+    </div>
+</div>
+<div class="errors">
+    <div class="errorred" id="errorred" onmouseover="document.getElementById('errormsgred').style.visibility = 'visible';audiosubmit.play();" onmouseout="document.getElementById('errormsgred').style.visibility = 'hidden';">&#33;</div>
+    <div class="errororange" onmouseover="document.getElementById('errormsgorange').style.visibility = 'visible';audiosubmit.play();" onmouseout="document.getElementById('errormsgorange').style.visibility = 'hidden';">&#33;</div>
+    <div class="errorblue" onmouseover="document.getElementById('errormsgblue').style.visibility = 'visible';audiosubmit.play();" onmouseout="document.getElementById('errormsgblue').style.visibility = 'hidden';">&#33;</div>
+</div>
+<div class="errormsg" id="errormsgred" style="visibility: hidden;">
+    <div class="errormessageimgred">!</div>
+    <div class="errormsgtitle">Servers down</div>
+    We are aware, that servers are down. Jinx! We don't even have servers yet!
+</div>
+<div class="errormsg" id="errormsgorange" style="visibility: hidden;">
+    <div class="errormessageimgorange">!</div>
+    <div class="errormsgtitle">More lags</div>
+    We are aware, that servers are down. Jinx! We don't even have servers yet!
+</div>
+<div class="errormsg" id="errormsgblue" style="visibility: hidden;">
+    <div class="errormessageimgblue">!</div>
+    <div class="errormsgtitle">URF mode online</div>
+    We are aware, that servers are down. Jinx! We don't even have servers yet!
+</div>
+<div class="prawo">
+    <div class="navbar">
+        <div class="navbuttonx" onclick="zamknijgre()">&#120;</div>
+        <div class="navbutton" onclick="win.minimize()">&#95;</div>
+        <div class="navbutton"></div>
+    </div>
+    <div class="logowrap">
+        <img draggable="false" src="../assets/images/lom.svg">
+    </div>
+
+        <div class="loginwrap">
+            <span class="smalltxt">Login</span>
+            <input class="formal" type="text">
+        </div>
+        <div class="loginwrap">
+            <span class="smalltxt">Password</span>
+            <input class="formal" type="password">
+        </div>
+        <div class="remember">
+            <input id="remembername" class="checkbox" type="checkbox">
+            <label for="remembername"></label>
+            <div class="standstill">Remember</div>
+        </div>
+        <div class="loginwrap">
+            <input id="loginbutton" class="logging" type="submit" value="Login" onmouseover="loginhover.play();" onclick="doLogin();">
+            <div class="loginerror" id="loginerror"></div>
+        </div>
+        <div class="langwrap">
+            <span class="smalltxt">Language</span>
+            <select id="lang" class="formalsel">
+                <option>English</option>
+                <option>Polski</option>
+            </select>
+            <span class="smalltxt">Region/Server</span>
+            <select id="region" class="formalsel">
+                <option>Europe</option>
+                <option>DEV</option>
+            </select>
+        </div>
+ 
+    <div class="linkswrap">
+        <div class="linkswrap2"><a href="land.html">Forgot login?</a></div>
+        <div class="linkswrap2"><a href="">Forgot password?</a></div>
+        <div class="linkswrap2"><a href="#">Create an account</a></div>
+    </div>
+    <div class="versionlogin"><hr>version 0.0001 alpha</div>
+</div>
+<script>
+function doLogin(){
+ $('#loginbutton').attr("disabled", true);
+loginclick.play();
+//loading animation
+$('#loginerror').html('<img src="../assets/images/loading.gif" alt="Loading.." height="42" width="42">');
+//loggin in
+$.get("http://pae.client.leagueofminecraft.net/bledy", function(data, status){$('#loginerror').text(data);
+loginerror.play();
+ $('#loginbutton').attr("disabled", false);
+});
+
+}
+
+
+$(document).ready(function () {
+
+
+
+  $('#animation:input:checkbox').change(function () {
+if (bgvideo == 'false'){
+document.getElementById('bgvideo').style.visibility = 'visible';
+bgvideo = 'true';
+}
+else {
+document.getElementById('bgvideo').style.visibility = 'hidden';
+bgvideo = 'false';
+}
+
+   });
+   
+ });
+ $(document).ready(function () {
+ $('#lsmusic:input:checkbox').change(function () {
+if( $("video").prop('muted') )
+    {
+        $("video").prop('muted', false);
+    }
+
+    else {
+    $("video").prop('muted', true);
+    }
+   });
+ });
+</script>
+</body>

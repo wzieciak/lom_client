@@ -1,0 +1,29 @@
+{
+  "main": "views/login.html",
+  "name": "LoM_Client",
+  "description": "Alpha Client",
+  "version": "0.1.1",
+  "keywords": [ "lom", "itplanet" ],
+  "nodejs": true,
+  "window": {
+    "title": "League of Minecraft Client",
+    "icon": "assets/images/icon.png",
+    "toolbar": false,
+    "frame": false,
+    "width": 1280,
+    "height": 576,
+    "position": "center",
+	"max_width": 1820,
+    "max_height": 764,
+    "min_width": 960,
+    "min_height": 432,
+	"fullscreen": false,
+	"resizable": true
+  },
+  "webkit": {
+    "plugin": true
+  },
+    "engines": {
+    "nw.js": "0.13.4"
+  }
+}

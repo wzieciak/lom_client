@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>League of Minecraft Pre-Alpha</title>
+    <meta charset="utf-8">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <link href="../assets/styles/main.css" rel="stylesheet">
+</head>
+<body>
+<script>
+    var gui = require('nw.gui');
+    var win = gui.Window.get();
+	var nickname = 'xYundy';
+	var session = '12345asdf';
+
+    function zamknijgre() {
+        gui.App.closeAllWindows();
+        gui.App.quit();
+    }
+	var loginhover = new Audio("../assets/sounds/interface/72_ui-hud_levelup_01.wav");
+var loginclick = new Audio("../assets/sounds/interface/73_ui-hud_levelup_click_01.wav");
+var loginerror = new Audio("../assets/sounds/interface/74_ui-hud_levelup_release_01.wav");
+	function playgame() {
+	loginclick.play();
+	$('#playgame').attr("disabled", true);
+require('child_process').exec('cmd /c rungame.bat ' + nickname + ' ' + session, function(){
+   // …you callback code may run here…
+   loginerror.play();
+   $('#playgame').attr("disabled", false);
+});
+	}
+</script>
+<div class="holdon"></div>
+<div class="lewo">
+</div>
+<div class="prawo">
+    <div class="navbar">
+        <div class="navbuttonx" onclick="zamknijgre()">&#120;</div>
+        <div class="navbutton" onclick="win.minimize()">&#95;</div>
+        <div class="navbutton"></div>
+    </div>
+    <div class="play" id="playgame" onmouseover="loginhover.play();" onclick="playgame();">PLAY</div>
+    <div class="namewrap">
+        <hr class="break">
+        YouHaveTrouble
+        <hr class="break">
+    </div>
+    <div class="rankwrap">
+        <div class="rankcenter">
+            <img src="../assets/images/ranks/rank.png">
+        </div>
+        <div class="rankname">Wood V</div>
+    </div>
+    <hr class="break">
+    <div class="bottombar">
+        <div class="bottombutton"
+             onclick="document.getElementById('friendslist').style.visibility = 'visible'; document.getElementById('alertlist').style.visibility = 'hidden';">
+            <img src="../assets/images/social.png">
+        </div>
+        <div class="bottombutton"
+             onclick="document.getElementById('friendslist').style.visibility = 'hidden'; document.getElementById('alertlist').style.visibility = 'visible';">
+            &#33;
+        </div>
+        <div class="friendslist" id="friendslist">
+            <div class="friendsfilter">
+                Friends list
+                <input type="text">
+                <div class="friendslistx" onclick="document.getElementById('friendslist').style.visibility = 'hidden';">
+                    x
+                </div>
+            </div>
+            <div class="friendwrap">
+                <div class="friend">
+                    <div class="friendlistavatar"></div>
+                    <div class="friendlistname">xYundy</div>
+                    <div class="friendliststatus"><span class="busy">In Game</span></div>
+                    <div class="friendmsgicon">&#9993</div>
+                </div>
+                <div class="friend">
+                    <div class="friendlistavatar"></div>
+                    <div class="friendlistname">Qwass</div>
+                    <div class="friendliststatus"><span class="online">Online</span></div>
+                    <div class="friendmsgicon">&#9993</div>
+                </div>
+                <div class="friend">
+                    <div class="friendlistavatar"></div>
+                    <div class="friendlistname">Kaspii</div>
+                    <div class="friendliststatus"><span class="online">Online</span></div>
+                    <div class="friendmsgicon">&#9993</div>
+                </div>
+                <div class="friend">
+                    <div class="friendlistavatar"></div>
+                    <div class="friendlistname">Nexu</div>
+                    <div class="friendliststatus"><span class="online">Online</span></div>
+                    <div class="friendmsgicon">&#9993</div>
+                </div>
+                <div class="friend">
+                    <div class="friendlistavatar"></div>
+                    <div class="friendlistname">Trick2g</div>
+                    <div class="friendliststatus"><span class="offline">Offline</span></div>
+                </div>
+                <div class="friend">
+                    <div class="friendlistavatar"></div>
+                    <div class="friendlistname">Gimper</div>
+                    <div class="friendliststatus"><span class="offline">Offline</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alertlist" id="alertlist">
+            <div class="alertsection">Alerts</div>
+            <div class="alertwrap">
+                <div class="alert">
+                    <div class="alerttitle">Server meintanance</div>
+                    <div class="alertdesc">server will be down in 1 hour</div>
+                </div>
+                <div class="alert">
+                    <div class="alertwrap2">
+                        <div class="alertgame">
+                            <div class="acceptgame">&#10004</div>
+                            <div class="declinegame">x</div>
+                        </div>
+                        <div class="alerttitle">Game invite</div>
+                        <div class="alertdesc">Qwass</div>
+                    </div>
+                </div>
+                <div class="alert">
+                    <div class="alerttitle">Game invite expired</div>
+                    <div class="alertdesc">Invite from YouHaveTrouble expired</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
