@@ -25,6 +25,9 @@ body {
     width: calc(80%);
     height: 100%;
     background-image: url(../images/lewo.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
     float: left;
 }
 
@@ -432,6 +435,7 @@ label {
     border: 1px solid #e0c16f;
     color: #f3efcf;
     opacity: 1.0;
+    font-size: 1.3vw;
 
 }
 
@@ -479,7 +483,7 @@ label {
     height: 35px;
     padding-top: 5px;
     color: #f3efcf;
-    font-size: 25px;
+    font-size: 1.8vw;
     margin-bottom: 10px;
 }
 
